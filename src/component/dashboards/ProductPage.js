@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UserContext } from "../../App";
-import { addToCart, fetchProducts } from "../../redux/AppSlice";
+import { fetchProducts } from "../../redux/AppSlice";
 import { Navbar } from "../navbar/Navbar";
 
 export const ProductPage = () => {
@@ -28,7 +27,9 @@ export const ProductPage = () => {
   }, []);
   // useEffect to show the products in the display page
   useEffect(() => {
-    if (state !== undefined) {
+    if (JSON.parse(localStorage.getItem("Products")) !== null) {
+      setProductsArr(JSON.parse(localStorage.getItem("Products")));
+    } else if (state !== undefined) {
       for (let i = 0; i < state.length; i++) {
         let obj = {
           id: state[i].id,
