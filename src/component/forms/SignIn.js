@@ -7,7 +7,6 @@ export const SignIn = () => {
   const navigate = useNavigate();
   const mobileRef = useRef();
   const passwordRef = useRef();
-  const roleRef = useRef();
   // function to handle Login
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,18 +20,18 @@ export const SignIn = () => {
       } else if (details[i].password !== passwordRef.current.value) {
         setAlertBox("block");
         setAlertMsg("Incorrect Password");
-      } else if (details[i].role !== roleRef.current.value) {
-        setAlertBox("block");
-        setAlertMsg("Please choose your role");
-      } else if (roleRef.current.value === "Admin") {
-        navigate("/Admin");
-        alert("Logged in successfully");
-      } else if (roleRef.current.value === "User") {
-        navigate("/ProductPage");
-        alert("Logged in successfully");
-      } else if (roleRef.current.value === "Manager") {
-        navigate("/ProductPage");
-        alert("Logged in successfully");
+      } else {
+        // setUserRole(details[i].role);
+        if (details[i].role === "Admin") {
+          navigate("/Admin");
+          alert("Logged in successfully");
+        } else if (details[i].role === "User") {
+          navigate("/ProductPage");
+          alert("Logged in successfully");
+        } else if (details[i].role === "Manager") {
+          navigate("/ProductPage");
+          alert("Logged in successfully");
+        }
       }
     }
   };
@@ -78,21 +77,6 @@ export const SignIn = () => {
             />
             <label htmlFor="floatingInput">
               <i className="fas fa-envelope-open"></i>&nbsp;Password
-            </label>
-          </div>
-          <div className="form-floating">
-            <select
-              className="form-select"
-              ref={roleRef}
-              aria-label="Floating label select example"
-            >
-              <option value="--Select--">Open this select menu</option>
-              <option value="Admin">Admin</option>
-              <option value="Manager">Manager</option>
-              <option value="User">User</option>
-            </select>
-            <label htmlFor="floatingSelect">
-              <i className="fas fa-tasks"></i>&nbsp;Choose your role
             </label>
           </div>
           {/* Alert Box Open */}
