@@ -80,7 +80,6 @@ export const ProductPage = () => {
   };
   // function to sort the product array
   const handleSort = (e) => {
-    console.log(select1Ref.current.value);
     let newArr;
     if (
       select1Ref.current.value === "price" &&

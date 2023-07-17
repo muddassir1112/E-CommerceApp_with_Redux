@@ -137,12 +137,11 @@ export const Navbar = () => {
                 className="btn float-end ms-2 logout-btn"
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
-                title="Log out"
                 type="button"
                 onClick={handleLogout}
                 style={{ background: "#ba87b9", color: "white" }}
               >
-                <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
+               Logout <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
               </button>
             </form>
           </div>
